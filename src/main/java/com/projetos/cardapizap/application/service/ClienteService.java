@@ -1,6 +1,8 @@
 package com.projetos.cardapizap.application.service;
 
 import com.projetos.cardapizap.application.dtos.ClienteDTO;
+import com.projetos.cardapizap.application.exception.clientes.ClienteInvalidoException;
+import com.projetos.cardapizap.application.exception.clientes.ClienteNotFoundException;
 import com.projetos.cardapizap.application.mapper.ClienteMapper;
 import com.projetos.cardapizap.domain.model.Cliente;
 import com.projetos.cardapizap.infrastructure.repository.ClienteRepository;
@@ -30,7 +32,7 @@ public class ClienteService {
     public ClienteDTO findById(UUID id) {
         return clienteRepository.findById(id)
                 .map(ClienteMapper::toDTO)
-                .orElse(null);
+                .orElseThrow(() -> new ClienteNotFoundException(id));
     }
 
     public ClienteDTO create(ClienteDTO clienteDTO) {
@@ -40,6 +42,9 @@ public class ClienteService {
     }
 
     public ClienteDTO update(UUID id, ClienteDTO clienteDTO) {
+        if (clienteDTO.getNome() == null || clienteDTO.getTelefone() == null) {
+            throw new ClienteInvalidoException("Nome e telefone são obrigatórios.");
+        }
         Cliente cliente = ClienteMapper.toEntity(clienteDTO);
         cliente.setId(id);
         cliente = clienteRepository.save(cliente);
