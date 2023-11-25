@@ -22,6 +22,13 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
+
+    public List<ProdutoDTO> findAll() {
+        return produtoRepository.findAll().stream()
+                .map(ProdutoMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
     public ProdutoDTO findById(Long id) {
         return produtoRepository.findById(id)
                 .map(ProdutoMapper::toDTO)
