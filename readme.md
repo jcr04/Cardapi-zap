@@ -37,7 +37,31 @@ A API fornece os seguintes endpoints:
 
 ### Produtos
 - `GET /produtos`: Retorna todos os produtos.
-- ... (e assim por diante para outros endpoints)
+- `GET /produtos/{id}`: Retorna um produto específico pelo ID.
+- `POST /produtos`: Cria um novo produto.
+- `PUT /produtos/{id}`: Atualiza um produto existente.
+- `DELETE /produtos/{id}`: Exclui um produto.
+
+### Endereços de Entrega
+- `GET /enderecos-entrega`: Retorna todos os endereços de entrega.
+- `GET /enderecos-entrega/{id}`: Retorna um endereço de entrega específico pelo ID.
+- `POST /enderecos-entrega`: Cadastra um novo endereço de entrega.
+- `PUT /enderecos-entrega/{id}`: Atualiza um endereço de entrega existente.
+- `DELETE /enderecos-entrega/{id}`: Remove um endereço de entrega.
+
+### Métodos de Pagamento
+- `GET /metodos-pagamento`: Lista todos os métodos de pagamento disponíveis.
+- `GET /metodos-pagamento/{id}`: Detalha um método de pagamento específico.
+- `POST /metodos-pagamento`: Adiciona um novo método de pagamento.
+- `PUT /metodos-pagamento/{id}`: Atualiza um método de pagamento existente.
+- `DELETE /metodos-pagamento/{id}`: Exclui um método de pagamento.
+
+### Pedidos
+- `GET /pedidos`: Exibe todos os pedidos realizados.
+- `GET /pedidos/{id}`: Mostra detalhes de um pedido específico.
+- `POST /pedidos`: Registra um novo pedido.
+- `PUT /pedidos/{id}`: Atualiza um pedido existente.
+- `DELETE /pedidos/{id}`: Cancela um pedido.
 
 ## Contribuições
 
