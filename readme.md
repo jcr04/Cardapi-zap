@@ -63,6 +63,47 @@ A API fornece os seguintes endpoints:
 - `PUT /pedidos/{id}`: Atualiza um pedido existente.
 - `DELETE /pedidos/{id}`: Cancela um pedido.
 
+## Retorno do Endpoint Principal
+```json
+[
+    {
+        "id": "a8e3f0cd-58fc-4406-8064-21cbc64b91ba",
+        "cliente": {
+            "id": "1c0dfecd-35da-41c4-87b1-9d39c0bbb6d1",
+            "nome": "João Carlos Rebouças",
+            "telefone": "98983307627",
+            "pedidos": null
+        },
+        "enderecoEntrega": {
+            "id": 1,
+            "rua": "Rua José Maria Santiago",
+            "numero": "505",
+            "complemento": "Próximo a Promotoria de Justiça",
+            "bairro": "Centro",
+            "cidade": "São José de Ribamar",
+            "estado": "Maranhão"
+        },
+        "metodoPagamento": {
+            "id": 1,
+            "descricao": "Pix",
+            "precisaDeTroco": null,
+            "valorTroco": null,
+            "bandeirasCartao": [],
+            "tipoChavePix": "Numero",
+            "chavePix": "98983307627"
+        },
+        "produtos": [
+            {
+                "id": 1,
+                "nome": "Pizza Margherita",
+                "preco": 25.50
+            }
+        ],
+        "valorTotal": 25.50
+    }
+]
+```
+
 ## Contribuições
 
 Contribuições são sempre bem-vindas! Para contribuir, por favor:
