@@ -3,6 +3,7 @@ package com.projetos.cardapizap.application.mapper;
 import com.projetos.cardapizap.application.dtos.ClienteDTO;
 import com.projetos.cardapizap.domain.model.Cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,6 @@ public class ClienteMapper {
         clienteDTO.setId(cliente.getId());
         clienteDTO.setNome(cliente.getNome());
         clienteDTO.setTelefone(cliente.getTelefone());
-        clienteDTO.setPedidos(cliente.getPedidos().stream().map(PedidoMapper::toDTO).collect(Collectors.toList()));
 
         return clienteDTO;
     }
@@ -32,7 +32,12 @@ public class ClienteMapper {
         cliente.setNome(clienteDTO.getNome());
         cliente.setTelefone(clienteDTO.getTelefone());
 
-        cliente.setPedidos(clienteDTO.getPedidos().stream().map(PedidoMapper::toEntity).collect(Collectors.toList()));
+        // Tratamento para lista de pedidos nula
+        if (clienteDTO.getPedidos() != null) {
+            cliente.setPedidos(clienteDTO.getPedidos().stream().map(PedidoMapper::toEntity).collect(Collectors.toList()));
+        } else {
+            cliente.setPedidos(new ArrayList<>()); // Inicializa com uma lista vazia
+        }
 
         return cliente;
     }
