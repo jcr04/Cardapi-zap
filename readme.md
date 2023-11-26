@@ -7,7 +7,7 @@ Ela permite criar, atualizar, visualizar e excluir clientes, produtos, pedidos e
 
 ## Tecnologias Utilizadas
 
-- Java 11
+- Java 17
 - Spring Boot
 - JPA/Hibernate
 - Banco de dados PostgreSQL
